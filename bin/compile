@@ -65,8 +65,8 @@ for PACKAGE in $(cat $BUILD_DIR/Aptfile); do
 done
 
 #add-apt-repository ppa:ubuntu-toolchain-r/test
-apt-get $APT_OPTIONS -y --force-yes install gcc-4.9
-apt-get $APT_OPTIONS -y --force-yes upgrade libstdc++6
+apt-get $APT_OPTIONS -y install gcc-4.9
+apt-get $APT_OPTIONS -y upgrade libstdc++6
 
 
 mkdir -p $BUILD_DIR/.apt
