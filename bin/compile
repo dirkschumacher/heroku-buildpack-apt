@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
-
 # fail fast
 set -e
 
@@ -64,6 +63,12 @@ for PACKAGE in $(cat $BUILD_DIR/Aptfile); do
     apt-get $APT_OPTIONS -y --force-yes -d install --reinstall $PACKAGE | indent
   fi
 done
+
+add-apt-repository ppa:ubuntu-toolchain-r/test
+apt-get update
+apt-get $APT_OPTIONS -y --force-yes install gcc-4.9
+apt-get $APT_OPTIONS -y --force-yes upgrade libstdc++6
+
 
 mkdir -p $BUILD_DIR/.apt
 
